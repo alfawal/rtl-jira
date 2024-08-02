@@ -1,13 +1,25 @@
-function sm(m) {
-  chrome.storage.local.set({ rtl_jira_mode: m });
+function sb(m) {
+  const bt = m.charAt(0).toUpperCase();
+  chrome.action.setBadgeText({ text: bt });
+  chrome.action.setBadgeBackgroundColor({
+    color: m === "off" ? "#A9A9A9" : "#6495ED",
+  });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function sm(m) {
+  chrome.storage.local.set({ rtl_jira_mode: m });
+  sb(m);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
   chrome.storage.local.get("rtl_jira_mode", (r) => {
     let m = r.rtl_jira_mode;
-    if (!m) m = "rtl";
+    if (!m) {
+      m = "rtl";
+      sb(m);
+    }
 
-    let el = document.querySelector("#" + m);
+    const el = document.querySelector("#" + m);
     el.checked = true;
     el.parentElement.classList.add("checked");
 
@@ -15,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cbs.forEach((cb) => {
       cb.addEventListener("change", (e) => {
         sm(cb.id);
+        sb(cb.id);
         cbs.forEach((c) => {
           c.parentElement.classList.remove("checked");
           c.checked = false;
@@ -27,19 +40,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const ce = document.getElementById("copy");
 
-  ce.addEventListener("click", function (e) {
+  ce.addEventListener("click", (e) => {
     e.preventDefault();
     navigator.clipboard.writeText("").then(
-      function () {
+      () => {
         const ot = ce.textContent;
         ce.textContent = "Link copied!";
-        setTimeout(function () {
-          ce.textContent = ot;
-        }, 3000);
+        setTimeout(() => (ce.textContent = ot), 3000);
       },
-      function () {
-        alert("Failed to copy :(");
-      }
+      () => alert("Failed to copy :(")
     );
   });
 });
