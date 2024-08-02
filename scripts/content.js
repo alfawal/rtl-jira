@@ -27,6 +27,18 @@ const s = [
   '[data-testid="page-card-end-of-page-view"]>div:nth-of-type(1)',
 ].join(",");
 
+const ps = [
+  // Jira
+  // Code blocks
+  ".code-block",
+  // Cards, link previews (after pasting a link)
+  ".blockCardView-content-wrap",
+  // Inline cards, link previews (after pasting a link)
+  ".inlineCardView-content-wrap",
+  // Floating toolbars (select language of code block, inline card settings)
+  '[data-testid="editor-floating-toolbar"]',
+].join(",");
+
 function csc(cs, m) {
   const es = document.querySelectorAll(s);
   const esl = es.length;
@@ -60,24 +72,27 @@ chrome.storage.local.get("rtl_jira_mode", (r) => {
 
   let cs = mcs[m];
 
-  const s = document.createElement("style");
-  s.innerHTML = `
+  const st = document.createElement("style");
+  st.innerHTML = `
     .rtl-jira-rtl {
         direction: rtl !important;
     }
-    .rtl-jira-ltr {
+
+    .rtl-jira-ltr, ${ps} {
         direction: ltr !important;
     }
+
     .rtl-jira-auto {
         direction: auto !important;
     }
+
     .rtl-jira-text-start {
         text-align: start !important;
     }
     `;
 
   const h = document.head || document.getElementsByTagName("head")[0];
-  h.appendChild(s);
+  h.appendChild(st);
 
   let dbto;
 
