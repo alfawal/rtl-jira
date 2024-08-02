@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RTL Jira</title>
+    <script src="popup.js"></script>
+    <link rel="stylesheet" href="popup.css" />
+    <style>
+      body {
+        width: max-content;
+        padding: 12px;
+      }
+      a {
+        line-height: 1rem;
+      }
+      span {
+        pointer-events: none;
+      }
+      h1 {
+        margin: 0%;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        margin-bottom: 4px;
+      }
+      fieldset {
+        display: flex;
+        gap: 8px;
+        margin: 0px;
+        margin-top: 14px;
+      }
+      label {
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background-color 0.2s;
+      }
+      label.checked,
+      label.checked:hover {
+        background-color: rgba(1, 127, 192, 0.4);
+      }
+      label:hover {
+        background-color: rgba(1, 127, 192, 0.15);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>RTL Jira</h1>
+    Right-to-Left Support for Atlassian products like Jira<br />
+    and Confluence
+    <fieldset>
+      <legend>Select a mode:</legend>
+      <label><input type="radio" id="off" name="off" />Off</label>
+      <label><input type="radio" id="ltr" name="ltr" />LTR</label>
+      <label><input type="radio" id="auto" name="auto" />Auto</label>
+      <label><input type="radio" id="rtl" name="rtl" />RTL</label>
+    </fieldset>
+    <div>
+      <a href="https://github.com/alfawal/rtl-jira/issues">Report an issue</a
+      ><span>&nbsp;&bull;&nbsp;</span><a href="">Review</a
+      ><span>&nbsp;&bull;&nbsp;</span
+      ><a href="https://github.com/alfawal/rtl-jira">Star on GitHub</a
+      ><span>&nbsp;&bull;&nbsp;</span><a href="" id="copy">Share link</a>
+    </div>
+  </body>
+</html>

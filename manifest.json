@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "RTL Jira",
+  "description": "Right-to-Left Support for Atlassian products like Jira and Confluence",
+  "version": "1.0",
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "images/icon.png",
+      "32": "images/icon.png",
+      "48": "images/icon.png",
+      "128": "images/icon.png"
+    }
+  },
+  "permissions": ["storage"],
+  "host_permissions": ["https://*.atlassian.net/*"],
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["https://*.atlassian.net/*"]
+    }
+  ]
+}
