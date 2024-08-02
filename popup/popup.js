@@ -42,13 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ce.addEventListener("click", (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText("").then(
-      () => {
-        const ot = ce.textContent;
-        ce.textContent = "Link copied!";
-        setTimeout(() => (ce.textContent = ot), 3000);
-      },
-      () => alert("Failed to copy :(")
-    );
+    navigator.clipboard
+      .writeText(
+        "https://chromewebstore.google.com/detail/rtl-jira/hginkadmmbneamgflaflgecjlgkopeck"
+      )
+      .then(
+        () => {
+          const ot = ce.textContent;
+          ce.textContent = "Link copied!";
+          setTimeout(() => (ce.textContent = ot), 3000);
+        },
+        () => alert("Failed to copy :(")
+      );
   });
 });

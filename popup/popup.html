@@ -8,6 +8,7 @@
       body {
         width: max-content;
         padding: 12px;
+        user-select: none;
       }
       a {
         line-height: 1rem;
@@ -52,14 +53,25 @@
       <label><input type="radio" id="auto" name="auto" />Auto</label>
       <label><input type="radio" id="rtl" name="rtl" />RTL</label>
     </fieldset>
-    <div>
+    <footer
+      style="
+        background-color: #525f7a57;
+        padding: 8px;
+        border-radius: 6px;
+        margin-top: 6px;
+      "
+    >
       <a
         href="https://github.com/alfawal/rtl-jira/issues"
         target="_blank"
         rel="noopener noreferrer"
         >Report an issue</a
       ><span>&nbsp;&bull;&nbsp;</span
-      ><a href="" target="_blank" rel="noopener noreferrer">Review</a
+      ><a
+        href="https://chromewebstore.google.com/detail/rtl-jira/hginkadmmbneamgflaflgecjlgkopeck/reviews"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Review</a
       ><span>&nbsp;&bull;&nbsp;</span
       ><a
         href="https://github.com/alfawal/rtl-jira"
@@ -67,6 +79,6 @@
         rel="noopener noreferrer"
         >Star on GitHub</a
       ><span>&nbsp;&bull;&nbsp;</span><a href="" id="copy">Share link</a>
-    </div>
+    </footer>
   </body>
 </html>
