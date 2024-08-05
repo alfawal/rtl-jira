@@ -27,7 +27,14 @@ const s = [
   '[data-testid="page-card-end-of-page-view"]>div:nth-of-type(1)',
 ].join(",");
 
-const ps = [
+const ss = [
+  // Jira
+  // Table
+  ".pm-table-wrapper > table > tbody > tr > th",
+  ".pm-table-wrapper > table > tbody > tr > td",
+].join(",");
+
+const sps = [
   // Jira
   // Code blocks
   ".code-block",
@@ -37,6 +44,11 @@ const ps = [
   ".inlineCardView-content-wrap",
   // Floating toolbars (select language of code block, inline card settings)
   '[data-testid="editor-floating-toolbar"]',
+  // Mention
+  ".mentionView-content-wrap",
+  '[data-testid="mention-with-profilecard-trigger"]',
+  // Mention, while searching
+  'mark[id^="decoration_id_typeahead_decoration_key_"][role="search"][data-type-ahead-query="true"][data-trigger="@"][data-editor-popup="true"]',
 ].join(",");
 
 function csc(cs, m) {
@@ -74,19 +86,20 @@ chrome.storage.local.get("rtl_jira_mode", (r) => {
 
   const st = document.createElement("style");
   st.innerHTML = `
-    .rtl-jira-rtl {
+    .rtl-jira-rtl, ${ss} {
         direction: rtl !important;
     }
 
-    .rtl-jira-ltr, ${ps} {
+    .rtl-jira-ltr, ${sps} {
         direction: ltr !important;
+        unicode-bidi: isolate;
     }
 
     .rtl-jira-auto {
         direction: auto !important;
     }
 
-    .rtl-jira-text-start {
+    .rtl-jira-text-start, ${ss} {
         text-align: start !important;
     }
     `;
